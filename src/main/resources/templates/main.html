@@ -1,22 +1,30 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">-->
-<!--<body>-->
-
-<form method="POST" action="#" th:action="@{${path}}" th:object="${form}">
+<form method="POST" action="#" th:action="@{${path}}" th:object="${form}" xmlns:th="http://www.w3.org/1999/xhtml">
+	<ul class="errs">
+		<li th:each="error : ${#fields.detailedErrors()}" th:text="${error.message}" class="err" />
+	</ul>
 	<input type="hidden" th:field="*{id}" />
 	<section id="form">
 		<dl class="clearfix">
 			<dt><label th:for="${#ids.next('author')}" class="required" >投稿者</label></dt>
 			<dd>
-				<div><input type="text" th:field="*{author}" th:value="${form.author}" /></div>
+				<div>
+					<input type="text" th:field="*{author}" th:value="*{author}" />
+					<span  th:errors="*{author}" th:errorclass="err"/>
+				</div>
 			</dd>
 			<dt><label th:for="${#ids.next('title')}" class="required">タイトル</label></dt>
 			<dd>
-				<div><input type="text" th:field="*{title}"  th:value="${form.title}"/></div>
+				<div>
+					<input type="text" th:field="*{title}"  th:value="*{title}"/>
+<!--					<span th:if="${#fileds.hasErrors('title')}" th:errors="*{title}" th:errorclass="err" />-->
+				</div>
 			</dd>
 			<dt><label th:for="${#ids.next('body')}" class="required">内容</label></dt>
 			<dd>
-				<div><textarea th:field="*{body}" th:value="${form.body}"></textarea></div>
+				<div>
+					<textarea th:field="*{body}" th:value="*{body}"></textarea>
+<!--					<span th:if="${#fileds.hasErrors('body')}" th:errors="*{body}" th:errorclass="err" />-->
+				</div>
 			</dd>
 		</dl>
 		<button type="submit">送信</button>
@@ -44,4 +52,3 @@
 		</li>
 	</ul>
 </section>
-<!--</body>-->

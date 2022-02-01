@@ -2,6 +2,7 @@ package com.example.board.service;
 
 import com.example.board.domain.Post;
 import com.example.board.repostory.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @Transactional
 public class PostService {
 
+    @Autowired
     private final PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
