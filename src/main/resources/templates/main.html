@@ -16,14 +16,14 @@
 			<dd>
 				<div>
 					<input type="text" th:field="*{title}"  th:value="*{title}"/>
-<!--					<span th:if="${#fileds.hasErrors('title')}" th:errors="*{title}" th:errorclass="err" />-->
+					<span  th:errors="*{title}" th:errorclass="err" />
 				</div>
 			</dd>
 			<dt><label th:for="${#ids.next('body')}" class="required">内容</label></dt>
 			<dd>
 				<div>
 					<textarea th:field="*{body}" th:value="*{body}"></textarea>
-<!--					<span th:if="${#fileds.hasErrors('body')}" th:errors="*{body}" th:errorclass="err" />-->
+					<span  th:errors="*{body}" th:errorclass="err" /><!--th:if="${#fileds.hasErrors('body')}"-->
 				</div>
 			</dd>
 		</dl>
