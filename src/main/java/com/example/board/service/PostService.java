@@ -52,10 +52,10 @@ public class PostService {
     }
 
     public List<Post> getAllPost(){
-        return postRepository.findAll()
-                .stream()
-                .filter(post -> !post.isDeleted())
-                .toList();
+        return postRepository.findByDeletedFalseOrderByUpdatedDateDesc();
+//                .stream()
+//                .filter(post -> !post.isDeleted())
+//                .toList();
     }
 
     public Post findPost(String id) {
