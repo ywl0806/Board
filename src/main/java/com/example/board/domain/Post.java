@@ -1,5 +1,7 @@
 package com.example.board.domain;
 
+import com.example.board.validation.Group2;
+import com.example.board.validation.Gruop1;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -22,18 +24,18 @@ public class Post {
     private String id = null;
 
     @Column
-    @NotEmpty
-    @Size(min = 1, max = 20)
+    @NotEmpty(groups = Gruop1.class)
+    @Size(min = 1, max = 20, groups = Group2.class)
     private String author = null;
 
     @Column
-    @NotEmpty
-    @Size(min = 1, max = 20)
+    @NotEmpty(groups = Gruop1.class)
+    @Size(min = 1, max = 20, groups = Group2.class)
     private String title = null;
 
     @Column
-    @NotEmpty
-    @Size(min = 1, max = 1000)
+    @NotEmpty(groups = Gruop1.class)
+    @Size(min = 1, max = 1000, groups = Group2.class)
     private String body = null;
 
     private Date createdDate = null;
